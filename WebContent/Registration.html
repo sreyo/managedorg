@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Registration Form</title>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+
+<!--Custom styles-->
+<style type="text/css">
+
+@charset "ISO-8859-1";
+@import url('https://fonts.googleapis.com/css?family=Numans');
+
+html,body{
+background-image: url('mmsbg1.jpeg');
+background-size: 100% 100%;
+background-repeat: no-repeat;
+height: 100%;
+font-family: 'Numans', sans-serif;
+/*  overflow: hidden;
+ */}
+
+.container{
+height: 100%;
+align-content: center;
+}
+
+.card{
+height: 370px;
+margin-top: auto;
+margin-bottom: auto;
+width: 400px;
+background-color: rgba(0,0,0,0.5) !important;
+}
+
+
+input:focus{
+outline: 0 0 0 0  !important;
+box-shadow: 0 0 0 0 !important;
+
+}
+
+.remember{
+color: white;
+}
+
+.remember input
+{
+width: 20px;
+height: 20px;
+margin-left: 15px;
+margin-right: 5px;
+}
+
+
+.note
+{
+    text-align: center;
+    height: 80px;
+/*     background: -webkit-linear-gradient(left, #0072ff, #8811c5);
+ */    color: #fff;
+    font-weight: bold;
+    line-height: 100px;
+}
+.form-content
+{
+    padding: 5%;
+    border: 1px solid #ced4da;
+    margin-bottom: 2%;
+}
+.form-control{
+    border-radius:1.5rem;
+    font-size: 12px;
+    
+}
+.btnSubmit
+{
+    border:none;
+    border-radius:1.5rem;
+    padding: 1%;
+    width: 15%;
+    cursor: pointer;
+    background: #0062cc;
+    color: #fff;
+    font-size: 12px;
+}
+
+.form-check-inline
+{
+    background-color:#FFFFFF;
+/*     border-color: #4c4;
+ */    font-size: 12px;
+}
+</style>
+
+<!------ Include the above in your HEAD tag ---------->
+<script type="text/javascript">
+$(document).ready(function() {
+	var domain = $(location).attr('hostname');    alert(domain);                
+	$('#hostname').val(domain);
+
+$("#btnSubmit").click(function() {
+    var gender   = $('#gender').val();
+    var address  = $('#address').val();	
+    var dob      = $('#dob').val();
+    var data     = $("#member_form").serialize() +"&address=" +address +"&dob="  +dob;
+	if(fname!=""&& lname!="" && email!="" && phone!="" && city!=""&& state!=""&& country!=""&& zip!=""&& address!=""&& dob!=""&& gender!=""){
+
+ 	$.ajax({
+		url: "AddmemServlet",
+		type: "POST",
+		data: data ,		
+		cache: false,
+		success : function(data){
+		  if($.trim(data) == "success") {
+			    alert("Registered Successfully");
+			    
+			    window.location.href = "login.jsp";
+
+		}else{
+			 alert("Something went wrong.");
+		}
+	}
+ 	});
+}else{
+	alert('Please fill all the field !');
+};
+});});
+$(document).ready(function(){
+	$('#btnback').click(function(){
+		parent.history.back();
+		return false;
+	});
+});
+
+</script>
+	
+
+
+</head>
+<body>
+<div class="container register-form">
+            <div class="form">
+                <div class="note">
+                    <p>MMS - Registration Form</p>
+                </div>
+				<form id="member_form" >
+
+                <div class="form-content">
+                    <div class="row">
+                    
+								<div class="form-group col-sm-6" >
+									<input type="text" id="fname" name="fname" class="form-control" 
+										placeholder="*FirstName" required>     
+										
+								</div>
+								<div class="form-group col-sm-6">
+									<input type="text" id="lname" name="lname" class="form-control"
+										placeholder="*LastName" required>
+								</div>
+								<div class="form-group col-sm-4">
+								    <input type="email" id="email" name="email" class="form-control"
+									placeholder="*Email " required>
+							    </div>
+							    								<div class="form-group col-sm-4">
+								    <input type="password" id="password" name="password" class="form-control"
+									placeholder="*Password " required>
+							    </div>
+							    
+							    <div class=clearfix></div>
+							    <div class="form-group  col-sm-4">
+								   <input type="phone" id="phone" name="phone" class="form-control" placeholder="*Phone" required>
+								</div>		
+															    <div class=clearfix></div>
+								
+								<div class="form-group col-sm-6">
+                           			 <input type="text" id="dob" class=form-control placeholder="*Date of Birth" onfocus="(this.type='date')" onblur="(this.type='text')" >
+                           		 </div>
+							    
+							    <div class="form-group col-md-6">
+														    
+							    	<div class="form-check-inline">
+ 									<label class="form-check-label">
+   									<input type="radio" class="form-check-input" name="gender" value="M">Male
+  									</label>
+									</div>
+									<div class="form-check-inline">
+  									<label class="-check-label">
+   									<input type="radio" class="form-check-input" name="gender" value="F">Female
+  									</label>
+									</div>
+							    							    
+							  </div>
+							<div class=clearfix></div>
+								<div class="form-group col-sm-4">
+									<textarea id="address" rows="4" cols="50" placeholder="Street Address" class="form-control"></textarea>
+								</div>
+																<div class="form-group col-sm-4">
+									<input type="text" id="address1" name="address1" placeholder=" Address 1" class="form-control"/>
+								</div>
+								
+								<div class="form-group col-sm-4">
+									<input type="text" id="city" name="city" class="form-control"
+										placeholder="City" required>
+ 				                </div>
+				                
+							<div class=clearfix></div>
+							<div class="form-group  col-sm-4">
+								<input type="text" id="state" name="state" class="form-control"
+										placeholder="State/Province/Region" required>
+								<input type="hidden" id="hostname" name="hostname"
+										class="form-control">
+								
+							
+							</div>
+							<div class="form-group  col-sm-4">
+								<input type="text" id="zip" name="zip" class="form-control"
+										placeholder="Postal/Zip Code" required>
+							
+							</div>
+							<div class="form-group  col-sm-4">
+				            <select id="country" name="country" class="form-control">
+				               <option value="1">---Select Country---</option>
+				               
+				                <option value="CANADA">CANADA</option>
+				                <option value="Mexico">MEXICO</option>
+				                <option value="USA">United States of America</option>
+							</select>							
+							</div>
+							
+							<div class=clearfix></div>
+							<div class="form-group  col-sm-6">
+							<input type="text" id="referedby" name="referedby" class="form-control"	placeholder="referredby" required>
+							
+							</div>
+							<div class="form-group  col-sm-6">
+							<input type="text" id="local" name="local" class="form-control"	placeholder="Local Member Organizations (edited)
+" required>
+							
+							</div>
+							
+							<div class=clearfix></div>
+							<div class="form-group  col-sm-5">
+							</div>
+<!-- 							<div class="form-group  col-sm-4">
+							</div>
+ -->							<div class="form-group  col-sm-7">
+			                    <input type="button" id="btnSubmit" class="btnSubmit" value="Submit">
+			                    <input type="button" id="btnback" class="btnSubmit" value="Go Back">
+			                    
+<!-- 			                    <button class="btnSubmit "onclick="goBack()">Go Back</button>
+ -->			                    
+		                    </div>
+							
+<!-- 						    
+								<button type="button" class="btn btn-success" id="btn-add_more">More</button>
+								<input type="button"  name="save" class="btn btn-primary" value="Save" id="butsave">
+								<input type="button"  class="btn btn-danger" data-dismiss="modal" value="Cancel">
+							
+							
+ -->						</div>
+					</div>
+<!-- 					<div id="note">
+- 					<table id="table1" name="table1">
+						<tbody>
+							<tr class="info ">
+								<th>ID</th>
+								<th>FirstName</th>
+								<th>LastName</th>
+								<th>email</th>			
+								<th>Phone</th>
+								<th>Gender</th>
+								<th>DOB</th>	
+								<th>Address</th>					
+								<th>Relation</th>
+								<th>Organization</th>
+								
+								<th>Action</th>
+							<tr>
+						</tbody>
+					</table>
+
+                  </div> 
+ -->							</div>
+                        </div>
+            </div></form>
+            
+        </div>
+</body>
+</html>
