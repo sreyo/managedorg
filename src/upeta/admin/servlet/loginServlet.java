@@ -46,12 +46,14 @@ public class loginServlet extends HttpServlet {
 	    String n=request.getParameter("username");  
 	    String p=request.getParameter("userpass");  
 	    String h = request.getParameter("hostname");
-	    if(Validate.checkUser(n,h,p)){  System.out.println("helo");
+	    if(Validate.checkUser(n,h,p)){  
 	    	HttpSession session = request.getSession(true); // reuse existing
 	        session.setAttribute("name",n);  
 	        session.setAttribute("host",h);  
 	        String newhost = new String("viswagokulam.org");
 	        String kala = new String("kalakendram.org");
+	        String hks = new String("hindukeralasociety.managedorg.com");
+
             if (h.equals(newhost)) {        System.out.println("vis"); 
 
                 String admin = new String("admin@sreyo.com");
@@ -74,6 +76,17 @@ public class loginServlet extends HttpServlet {
     		        rd.forward(request,response); 
 
     	        }
+            }else if (h.equals(hks)) {         System.out.println("hks");
+
+            String admin = new String("admin@sreyo.com");
+            if(n.equals(admin)) {
+		        RequestDispatcher rd=request.getRequestDispatcher("newdashboard.jsp");  
+		        rd.forward(request,response); 
+	        }else {
+		        RequestDispatcher rd=request.getRequestDispatcher("userviswadashboard.jsp");  
+		        rd.forward(request,response); 
+
+	        }
             }else {
             String admin = new String("admin@sreyo.com");
             if(n.equals(admin)) {

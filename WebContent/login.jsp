@@ -16,30 +16,25 @@
     <!--Fontawesome CDN-->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
+
 	<!--Custom styles-->
 <style><%@include file="/WEB-INF/css/style.css"%></style>
 <script type="text/javascript">
 $(document).ready(function(){
 var domain = $(location).attr('hostname');  
-/* var part = location.hostname.split('.');
-var subdomains = part.shift();
- */
- //var domain = "kalakendram.org";
- var domain = "viswagokulam.org";
-
-$('#hostname').val(domain);
+ $('#hostname').val(domain);
  if(domain == "viswagokulam.org"){
 	 $("#myLink").attr("href", "${pageContext.request.contextPath}/viswagokulam.jsp");
-
-/*        window.location.replace("viswagokulam.jsp");
- */
- }
- if(domain == "kalakendram.org"){
-/*      window.location.replace("kalakendram.jsp");
- */
-	 $("#myLink").attr("href", "${pageContext.request.contextPath}/kalakendram.jsp");
-
 }
+ if(domain == "kalakendram.org"){
+	 $("#myLink").attr("href", "${pageContext.request.contextPath}/kalakendram.jsp");
+}
+ if(domain == "hindukeralasociety.managedorg.com"){
+	 	 $("#myLink").attr("href", "${pageContext.request.contextPath}/hks.jsp");
+}
+if(domain == "test.managedorg.com"){
+		window.location.replace("https://managedorg.com/managedorgtest/");
+	}
 
 });
 </script>
