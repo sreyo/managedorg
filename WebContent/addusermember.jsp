@@ -2,6 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 
  <script>
+ 
  $( window ).load(function() {
 		var sesid = $('#createdby').val();
 		$.ajax({
