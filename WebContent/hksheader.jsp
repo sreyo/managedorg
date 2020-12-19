@@ -41,7 +41,7 @@ background-repeat: no-repeat;
 }
 .logo-div  {
 Width: 100px; /* Adjust as needed */
-height: 40px; /* Adjust as needed */
+height: 20px; /* Adjust as needed */
 relative: fixed;
 left:0; /* Adjust as needed */
 top: 0; /* Adjust as needed */
@@ -50,14 +50,14 @@ z-index: 1; /* Adjust as needed */
 
 </style>
 
-<title>VISWAGOKULAM REGISTRATION</title>
+<title>HKS REGISTRATION</title>
 </head>
 <body>
-	<div class="container-fluid main-container" style="background-image: url('viswabg.jpg');background-size: 100% 100%;background-repeat: no-repeat;">
+	<div class="container-fluid main-container" style="background-image: url('hksbg.jpg');background-size: 100% 100%;background-repeat: no-repeat;">
   		<div class="col-md-12 content">
   			  <div class="panel panel-default">
-	<div class="panel-heading" style="background-image: url('viswaheader.png');background-size: 100% 100%;background-repeat: no-repeat;color:white;font-size: 18px;height: 80px;">
-	<div class="logo-div" ><img alt="" src="logo.jpg"></div>
-	<center>VISWAGOKULAM - Registration</center>
+	<div class="panel-heading" style="background-image: url('hksheader.jpg');background-size: 100% 100%;background-repeat: no-repeat;color:white;font-size: 18px;height: 80px;">
+	<div class="logo-div" ><img alt="" src="hkslogo.png"></div>
+	<center>HKS - Registration</center>
 	</div>
 	

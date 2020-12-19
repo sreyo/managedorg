@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>KALAKENDRAM</title>
+<title>VISWAGOKULAM</title>
 <style> 
  table th,  tr, td { 
     padding: 10px; 
@@ -54,9 +54,7 @@
 	});    	
 
 $(document).ready( function() {
-   var domain = $(location).attr('hostname');  
-/* 	 var part = location.hostname.split('.');
-	 var subdomains = part.shift();*/
+	 var domain = $(location).attr('hostname');  
 
 	 $('#hostname').val(domain);
 	 $("#relation option[value='Spouse']").hide();
@@ -122,7 +120,7 @@ $(document).ready( function() {
 	 $("#relation option[value='Child']").show();
 	 $("#relation option[value='Parent']").show();
      var home =  $("#khometown").val();
-     var year =  $("#yearpicker").val();  
+     var year =  $("#yearpicker").val(); 
      var setmobile= $("#phone").val();
      var setemail = $("#email").val();
      var address  = $("#address").val();
@@ -130,92 +128,101 @@ $(document).ready( function() {
 	 var country  = $('#country option:selected').val() ;
      var state    = $("#state").val();
      var city     = $("#city").val();
+     var malrating =  $("input[name=malrating]:checked", "#member_form").val();//alert(malrating);
+     var hinrating =  $("input[name=hinrating]:checked").val();//alert(hinrating);
      var pswd =  $('#pass1').val();
      var form = this;
       if( $("#fname").val()==''||$("#lname").val()==''){
-         alert('Name required');		        		
-             	 $("#relation option[value='Head of Household']").show();
+         alert('Name required');
+    	 $("#relation option[value='Head of Household']").show();
          e.preventDefault();
          return false;
 	  }
 	  var sel =  $('#relation option:selected').val() ;
       if(sel == ''){
           alert('Relation required');
-         $("#relation option[value='Head of Household']").show();          e.preventDefault();
+     	  $("#relation option[value='Head of Household']").show();
+          e.preventDefault();
           return false;
       }
      //KERALA hometown only if age greather than 21
       if(year == '')
-      {   alert('Year required');	
-        $("#relation option[value='Head of Household']").show();
-      	        		
+      {   alert('Year required');
+ 	      $("#relation option[value='Head of Household']").show();
       	  e.preventDefault();
           return false;
 	  }
 	  var gne = $("input[name=gender]:checked").val();
 	  if(typeof gne === 'undefined'){
           alert('Gender required');
-          $("#relation option[value='Head of Household']").show();
+     	 $("#relation option[value='Head of Household']").show();
           e.preventDefault();
           return false;
       }
       if( ((setmobile == '')&&(year <=2000))||((setmobile == '')&&(sel=="Head of Household"))){
           alert('Phone number required');
-          $("#relation option[value='Head of Household']").show();
+     	 $("#relation option[value='Head of Household']").show();
           e.preventDefault();
           return false;
        }
       if(( (setemail == '')&&(year <=2000))||((setemail == '')&&(sel=="Head of Household"))){
           alert('Email required');
-          $("#relation option[value='Head of Household']").show();
+     	 $("#relation option[value='Head of Household']").show();
           e.preventDefault();
           return false;
        }
       if( (home == '')&&(year <=2000)){
           alert('Kerala Hometown required');
-          $("#relation option[value='Head of Household']").show();
+     	  $("#relation option[value='Head of Household']").show();
           e.preventDefault();
           return false;
        }
       if((address =='')&&(sel=="Head of Household"))
-      {   alert('Address required');	
-       	      $("#relation option[value='Head of Household']").show();
-      	        		
+      {   alert('Address required');		
+ 	      $("#relation option[value='Head of Household']").show();
       	  e.preventDefault();
           return false;
 	  }
       if((zip =='')&&(sel=="Head of Household"))
-      {   alert('Zip required');
-       	      $("#relation option[value='Head of Household']").show();
-      		        		
+      {   alert('Zip required');	
+       	  $("#relation option[value='Head of Household']").show();
       	  e.preventDefault();
           return false;
 	  }
       if((country =='')&&(sel=="Head of Household"))
       {   alert('Country required');
-       	      $("#relation option[value='Head of Household']").show();
-      		        		
-      	  e.preventDefault();
+          $("#relation option[value='Head of Household']").show();
+       	  e.preventDefault();
           return false;
 	  }
       if((state =='')&&(sel=="Head of Household"))
-      {   alert('State required');	
-       	      $("#relation option[value='Head of Household']").show();
-      	        		
-      	  e.preventDefault();
+      {   alert('State required');		        		
+  	      $("#relation option[value='Head of Household']").show();
+          e.preventDefault();
           return false;
 	  }
       if((city =='')&&(sel=="Head of Household"))
       {   alert('City required');	
-       	      $("#relation option[value='Head of Household']").show();
-      	        		
+  	      $("#relation option[value='Head of Household']").show();
       	  e.preventDefault();
           return false;
 	  }
+	  if(typeof malrating === 'undefined'){
+          alert('Malayalam Proficiency required');
+  	      $("#relation option[value='Head of Household']").show();
+          e.preventDefault();
+          return false;
+      }
+	  if(typeof hinrating === 'undefined'){
+          alert('HinduDharma Proficiency required');
+  	      $("#relation option[value='Head of Household']").show();
+          e.preventDefault();
+          return false;
+      }
       if(pswd==''){
     	  alert('Password required');
-    	    	      $("#relation option[value='Head of Household']").show();
-    	            e.preventDefault();
+  	      $("#relation option[value='Head of Household']").show();
+          e.preventDefault();
           return false;
       }
       // Check Passwords are the same
@@ -223,16 +230,12 @@ $(document).ready( function() {
 	          // Submit Form
 	      
 	          alert('Password Mismatch');
-	          	  	      $("#relation option[value='Head of Household']").show();
-	          	          e.preventDefault();
+	  	      $("#relation option[value='Head of Household']").show();
+	          e.preventDefault();
 	          return false;
 	      }
       
-	    $(".info").show(); 
-	    var chkids = [];
-	    $("input[name='course[]']:checked").each(function () {
-	    	chkids.push($(this).val());
-	    });
+	   $(".info").show(); 
 
 	    var newid = id++; 
  		$("#table1").append('<tr valign="top" id="'+newid+'">\n\
@@ -253,9 +256,10 @@ $(document).ready( function() {
 		<td  class="state'+newid+'">' + $("#state").val() + '</td>\n\
 		<td  class="city'+newid+'">' + $("#city").val() + '</td>\n\
 		<td  class="hide password'+newid+'">' + $("#pass1").val() + '</td>\n\
-		<td  class="hide course'+newid+'">' +  chkids + '</td>\n\
-		<td width="100px" id="'+newid+'"><a href="javascript:void(0);"  id="'+newid+'"class="remCF btn btn-warning">Remove</a></td>\n\ </tr>');
-
+		<td  class="hide malrating'+newid+'">' +  $("input[name=malrating]:checked", "#member_form").val() + '</td>\n\
+		<td  class="hide hinrating'+newid+'">' +$("input[name=hinrating]:checked").val()+ '</td>\n\ </tr>');
+/* 		<td width="100px" id="'+newid+'"><a href="javascript:void(0);"  id="'+newid+'"class="remCF btn btn-warning">Remove</a></td>\n\ </tr>');
+ */
  		$('#member_form')[0].reset();
  		/*    $("input[name='password']").val('');
         $('input[name="gender"]').prop('checked', false);
@@ -264,10 +268,21 @@ $(document).ready( function() {
 
 
  		$('#gender :checked').removeAttr('checked');
- */		$("#table1").on('click', '.remCF', function() {
-/* 		      var idhref = $(this).attr('id');
-			$('#table1 tr#'+idhref).remove();
- */			$(this).parent().parent().remove();
+ */		
+ 			$("#table1").on('click', '.remCF', function() {
+ 		    var idhref = $(this).attr('id');
+ 			var relation = $('#table1') .find('td:eq(3)') .text();  //alert(relation);   
+ 			var id = $('#table1') .find('td:eq(0)') .text();    
+            if(idhref == id){
+ 			if(relation === "Head of Household")
+ 			{
+ 				 $("#relation option[value='Head of Household']").show();
+ 	 			 $(".info").show(); 
+ 
+ 			}}
+            
+ /*			$('#table1 tr#'+idhref).remove();
+ */	     	$(this).parent().parent().remove();
             var rowCount = $('#table1 tr').length;
             if(rowCount<=2)
  			{$(".info").hide(); }else{$(".info").show();}
@@ -298,7 +313,8 @@ $(document).ready( function() {
 		var state = new Array();
 		var city = new Array();
 		var password = new Array();
-		var course = new Array();
+		var mal = new Array();
+		var hin = new Array();
 		
 		for ( var i = 1; i <= lastRowId; i++) {
 
@@ -318,23 +334,29 @@ $(document).ready( function() {
 			state.push($("#"+i+" .state"+i).html()); 
 			city.push($("#"+i+" .city"+i).html()); 
 			password.push($("#"+i+" .password"+i).html()); 
-			course.push($("#"+i+ " .course"+i).html());
+			mal.push($("#"+i+ " .malrating"+i).html());
+			hin.push($("#"+i+ " .hinrating"+i).html());
 
-        }		
+        }
 		var createdby = email[0];
-        	$.ajax({
-			url: "AddkalaregServlet",
+		$.ajax({
+			url: "AddregmemServlet",
 			type: "POST",
-			data: {hostname:domain,sesid:createdby,fname:fname, lname:lname, email:email, phone:phone, khometown:khometown, gender:gender,relation:relation, address:address,address1:address1, dob:dob,monthdob:monthdob, city:city, state:state, country:country, zip:zip, password:password,course:course,id:lastRowId },		
+			data: {hostname:domain,sesid:createdby,fname:fname, lname:lname, email:email, phone:phone, khometown:khometown, gender:gender,relation:relation, address:address,address1:address1, dob:dob,monthdob:monthdob, city:city, state:state, country:country, zip:zip, password:password,mal:mal,hin:hin,id:lastRowId },		
 		    cache : false,
+		    beforeSend: function() { 
+/* 		        $("#product_id").html('<option> Loading ...</option>');
+ */		        $("#butsave").prop('disabled', true); // disable button
+		      },
+
 			success : function(data){
                 if(data == "success") {
-					alert("Registered Successfully");	
+					alert("Registered Successfully");
 	                location.reload();						
 				}else{
-					alert("Something went wrong");
-				    location.reload();						
-					 }
+					alert("Something went wrong.Try Again");
+	                location.reload();						
+				}
 			}
 			});
 		});
@@ -343,20 +365,23 @@ $(document).ready( function() {
 
 </head>
 <body>
-<div class="card " style="background-image: url('bg.jpg');background-size: 100% 100%;background-repeat: no-repeat;">
+<div class="card " style="background-image: url('hksbg.jpg');background-size: 100% 100%;background-repeat: no-repeat;">
 <form id="member_form" >
 
 <div class="container-fluid">
 	<div class="row">
- 
+<!--  <div id="progress">
+    <img style="width:100%" src="/images/spinner.gif"/>
+</div>
+ --> 
  
  
 				<div class="form-group">
 				<input type="hidden" id="hostname" name="hostname"
 										class="form-control">
 				
-				<input type="hidden" id="createdby"
-					value="<%= session.getAttribute('name') %>">
+				<input type="hidden" id="createdby" value="<%= session.getAttribute('name') %>" 
+				/>
 				</div>
 
 				<div class="form-group col-sm-4" >
@@ -369,7 +394,6 @@ $(document).ready( function() {
 				</div>
 				<div class="form-group col-sm-4" >
 				<select  id="relation" class="form-control" onchange="showrelDiv('hidden_div', this)"  >
-				
 					    <option value="">Select Relation *</option>
 						<option  value="Head of Household"  > Head of Household</option>
 						<option  value="Spouse">Spouse</option>
@@ -383,9 +407,8 @@ $(document).ready( function() {
 
 					    }
 
-
-
 					    </script>
+    						
 								
 		    </div>
 		     <div class=clearfix></div>
@@ -402,9 +425,10 @@ $(document).ready( function() {
 				    </script>
 					
 				    <label style="color:white">Year</label>
- <select name="yearpicker" id="yearpicker" >
+<!-- 				    <select name="yearpicker" id="yearpicker" onchange="showDiv('hidden1_div', this)">
+ -->				    <select name="yearpicker" id="yearpicker" >
 				    <option value="">Select Year *</option></select>
-				   <script type="text/javascript">
+				    <script type="text/javascript">
 				    let startYear = 1900;
 				    let endYear = new Date().getFullYear();
 				    for (i = endYear; i > startYear; i--)
@@ -452,7 +476,7 @@ $(document).ready( function() {
                </div>
 
 			   <div class=clearfix></div>
-			   			   <div id="hidden_div">
+			   <div id="hidden_div">
 			   
 			   <div class="form-group col-sm-4" >
 					<textarea id="address" rows="4" cols="50" placeholder="Address *" class="form-control"></textarea>
@@ -464,12 +488,10 @@ $(document).ready( function() {
 				<div class="form-group col-sm-4" >
 				<input type="text" id="zip" name="zip" class="form-control"
 										placeholder="Zip *" required>
-								
-					
 				     </div>
 			<div class=clearfix></div>
 						<div class="form-group  col-sm-4">
-				            <select id="country" name="country" class="form-control">
+				            <select id="country" name="country" class="form-control" >
 				                <option value="">Select Country *</option>
 				                <option value="USA">USA</option>
 				                <option value="Canada">Canada</option>
@@ -520,9 +542,7 @@ $(document).ready( function() {
 			</div>
 							
 			<div class=clearfix></div>
-			
-			
-								<div class="form-group col-sm-4" >
+    <div class="form-group col-sm-4" >
     <input type="password" name="password" id="pass1" placeholder="Password *" class="form-control" required>
 								
 			</div>
@@ -535,29 +555,36 @@ $(document).ready( function() {
 								
 			
 		</div>
-		<div class=clearfix></div>
-	 <div class="form-group col-sm-12" style="color:white;diplay:inline;">			
-	 <p><label>Interested in"</label></p>
-	  <input type="checkbox" id="Carnatic Music" value="Carnatic Music" name="course[]"><label for="Carnatic Music"> Carnatic Music</label>
-	  <input type="checkbox" id="Light Music" value="Light Music" name="course[]"><label for="Light Music"> Light Music</label>
-	    <input type="checkbox" id="Devotional Music" value="Devotional Music" name="course[]"><label for="Devotional Music"> Devotional Music</label>
-	     <input type="checkbox" id="Bharatanatyam" value="Bharatanatyam" name="course[]"><label for="Bharatanatyam"> Bharatanatyam</label>
-	      <input type="checkbox" id="Mohiniyattam" value="Mohiniyattam" name="course[]"><label for="Mohiniyattam"> Mohiniyattam</label>
-	       <input type="checkbox" id="Kuchipudi" value="Kuchipudi"name="course[]"><label for="Kuchipudi"> Kuchipudi</label>
-	       <input type="checkbox" id="Kathak" value="Kathak"name="course[]"><label for="Kathak"> Kathak</label>
-	       <input type="checkbox" id="Bollywood Dance" value="Bollywood Dance"name="course[]"><label for="Bollywood Dance"> Bollywood Dance</label>
-	       <input type="checkbox" id="Violin (Carnatic)" value="Violin (Carnatic)"name="course[]"><label for="Violin (Carnatic)"> Violin (Carnatic)</label>
-	       <input type="checkbox" id="Mridangam" value="Mridangam"name="course[]"><label for="Mridangam"> Mridangam</label>
-	       <input type="checkbox" id="Veena" value="Veena"name="course[]"><label for="Veena"> Veena</label>
-	       <input type="checkbox" id="Tabla" value="Tabla"name="course[]"><label for="Tabla"> Tabla</label>
-	       <input type="checkbox" id="Keyboard (Carnatic)" value="Keyboard (Carnatic)"name="course[]"><label for="Keyboard (Carnatic)"> Keyboard (Carnatic)</label>
-	       <input type="checkbox" id="Western Keyboard" value="Western Keyboard"name="course[]"><label for="Western Keyboard"> Western Keyboard</label>
-	       <input type="checkbox" id="Western Classical Music" value="Western Classical Music"name="course[]"><label for="Western Classical Music"> Western Classical Music</label>
-	       <input type="checkbox" id="Western Violin" value="Western Violin"name="course[]"><label for="Western Violin"> Western Violin</label>
-	       <input type="checkbox" id="Drums" value="Drums"name="course[]"><label for="Drums"> Drums</label>	       
-	       <input type="checkbox" id="Yoga" value="Yoga"name="course[]"><label for="Yoga"> Yoga</label>
-		   <input type="checkbox" id="Zumba" value="Zumba"name="course[]"><label for="Zumba"> Zumba</label>	
+					<div class=clearfix></div>
+	 <div class="form-group col-sm-12">			
+	 <h4 style="color:white;">Proficiency Levels</h4>
+			<p><bold>0 = None. 	1 = Know basics (for conversation, letters, slokas, stories).	2 = Can do basic covering writing and basic reading.	 3 = Can do some intermediate writing and reading.	4 = Can converse fluently, read extensively.  5 = Expert, Can Teach.</bold></p>
 	 </div>
+		<div class="form-group col-sm-12" id="mal">
+		<div class="form-group col-sm-4"> <left><label style="color:white;" >Malayalam Proficiency: *</label></left></div>
+        <div class="form-group col-sm-8" style="color:white;diplay:inline;">
+         <input type="radio" name="malrating" value="0" /><label>0</label>
+         <input type="radio" name="malrating" value="1" /><label>1</label>
+         <input type="radio" name="malrating" value="2" /><label>2</label>
+         <input type="radio" name="malrating" value="3" /><label>3</label>
+         <input type="radio" name="malrating" value="4" /><label>4</label>
+         <input type="radio" name="malrating" value="5" /><label>5</label>
+      
+		</div>	</div>
+		<div class="form-group col-sm-12" id="hin">
+		<div class="form-group col-sm-4"> 
+		<left><label style="color:white;" >HinduDharma Proficiency: *</label></left>
+		</div>
+        <div class="form-group col-sm-8" style="color:white;diplay:inline;">
+         <input type="radio" name="hinrating" value="0" />0
+         <input type="radio" name="hinrating" value="1" />1
+         <input type="radio" name="hinrating" value="2" />2
+         <input type="radio" name="hinrating" value="3" />3
+         <input type="radio" name="hinrating" value="4" />4
+         <input type="radio" name="hinrating" value="5" />5
+      
+		</div>	
+		</div>
 		<div class="row">
 <div class="form-group  col-sm-4"></div>
 <div class="form-group  col-sm-4"></div>
@@ -578,8 +605,8 @@ $(document).ready( function() {
 						<th>Country</th>
 						<th>State</th>
 						<th>City</th>
-						<th>Action</th>
-						
+<!-- 						<th>Action</th>
+ -->						
 					<tr>
 				</tbody>
 			</table> 
@@ -589,11 +616,11 @@ $(document).ready( function() {
 <div class="form-group  col-sm-4"></div>
 
 <div class="form-group  col-sm-4">
-				<button type="button" class="btn btn-warning" id="butsave" name="save">Submit</button>
+<button type="button" class="btn btn-info" id="butsave" name="save">Submit</button>
 
 </div></div>
-</div></form>	</div>
-
+</div></form>	
+</div>
 
 </body>
 </html>

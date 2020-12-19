@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    
     <script>
     
          $(document).ready(function() {
@@ -9,12 +8,12 @@
              var hostname = $('#host').val();
              localStorage.setItem("email", email);
              localStorage.setItem("hostname", hostname);
-
+             $("button").click(function(){
              $.post("registerviswagokulamdashboard.html", function(data){
 
                  $('.modal-body').html(data);
 
-           	});
+           	});});
 
          
 			$.ajax({
@@ -54,7 +53,7 @@
 	
 
     </script>
-<div class="container-fluid" style="overflow-x: auto; overflow-y : auto;">
+<div class="container-fluid" >
 <div class="col-md-12" style="  padding-bottom: 1em;">
 <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
   Add Family Member
@@ -68,8 +67,8 @@
 
 </div>
 <div class="col-md-12  ">
-<div class="modal" id="myModal" data-backdrop="static" data-keyboard="false" >
-  <div class="modal-dialog modal-lg">
+<div class="modal" id="myModal" data-backdrop="static"  style="overflow: auto" >
+  <div class="modal-dialog modal-lg" >
     <div class="modal-content">
 
       <!-- Modal Header -->
@@ -95,7 +94,6 @@
 
 	   	<table id="table_viewmember" class="table table-striped table-hover table-responsive">
 	   
-		<tbody>
 		
 		<thead>
 			<tr class="info ">
@@ -112,6 +110,8 @@
 				
 			<tr>
 		</thead>
+		<tbody>
+		
 		</tbody>
 		
 	</table></div></div>

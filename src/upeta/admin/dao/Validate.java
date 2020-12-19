@@ -13,6 +13,8 @@ public class Validate {
             Connection con = DBconnect.initializeDatabase(hostname);
 			String newh = new String("viswagokulam.org");
 			String kala = new String("kalakendram.org");
+			String hks = new String("hindukeralasociety.managedorg.com");
+
 
 			if(hostname.equals(newh)) {
 				String admin = new String("admin@sreyo.com");
@@ -31,6 +33,21 @@ public class Validate {
 	            }
 
 			}else if(hostname.equals(kala)) {
+				String admin = new String("admin@sreyo.com");
+	            if(email.equals(admin)) {
+
+	            PreparedStatement ps = con.prepareStatement("select * from upt_registration where email=? and password=?");
+	            ps.setString(1, email);
+	            ps.setString(2, pass);
+	            ResultSet rs =ps.executeQuery();System.out.println(ps);
+	            st = rs.next();}else {
+		            PreparedStatement ps = con.prepareStatement("select * from upt_registration where email=? and password=?");
+		            ps.setString(1, email);
+		            ps.setString(2, pass);
+		            ResultSet rs =ps.executeQuery();System.out.println(ps);
+		            st = rs.next();
+	            }
+			}else if(hostname.equals(hks)) {System.out.println("hks");
 				String admin = new String("admin@sreyo.com");
 	            if(email.equals(admin)) {
 
